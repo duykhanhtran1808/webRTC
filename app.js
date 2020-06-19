@@ -3,19 +3,19 @@ let start = document.querySelector("#startButton")
 let stop = document.querySelector("#stopButton")
 
 
-navigator.mediaDevices.getUserMedia({audio: true, video: true}).then(function(mediaStreamObj) {
+navigator.mediaDevices.getUserMedia({audio: true, video: false}).then(function(mediaStreamObj) {
   let video = document.querySelector('video');
-  video.srcObject = mediaStreamObj
-
 
   
 
   start.addEventListener('click', (ev) => {
+    video.srcObject = mediaStreamObj
     video.play()
   })
 
   stop.addEventListener('click', (ev) => {
-    video.pause()
+    // video.pause()  // Sẽ để lại hình tạm dừng trên video
+    video.srcObject = null
   })
 
 
